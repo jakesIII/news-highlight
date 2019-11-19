@@ -1,0 +1,52 @@
+
+
+
+
+{% macro displaynewsList(news_list) %}
+{% for news in news_list %}
+<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 source">
+
+     <div class="card-header">
+        <h4 class="text-center"><a href="/news/{{news.id}}"> {{ news.name }}</a></h4>
+      </div>
+
+
+      <p class="text-center" style="font-size:16px;">{{ news.description| truncate (200)}}</p>
+
+      <div class="card-footer">
+        <p class="text-center"> Country: {{ news.country}}</p>
+      </div>
+
+
+
+</div>
+
+{% endfor %}
+
+
+{% endmacro %}
+{% macro mylist(articles_list) %}
+{% for news in articles_list %}
+<div class="col-sm-12 col-md-6 col-lg-4 card article">
+
+      <div class='card-body'>
+
+          <img class="image-thumbnail" src=" {{news.urlToImage}}" height="200" width="200">
+
+          <p class="text-center "> <b>{{ news.author }}</b> </p>
+
+          <hr>
+
+          <p class="text-center ">{{ news.content | truncate (100)}}</p>
+
+          <a href="{{news.url}} "><button class="text-center btn btn-outline-primary"> Read More</button></a>
+
+          <p class="text-center ">{{ news.publishedAt.date }}</p>
+
+
+      </div>
+
+</div>
+
+{% endfor %}
+{% endmacro %}
